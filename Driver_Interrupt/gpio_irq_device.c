@@ -146,5 +146,5 @@ module_init(gpio_irq_init);
 module_exit(gpio_irq_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("CDT");
+MODULE_AUTHOR("Thanh Huy");
 MODULE_DESCRIPTION("A simple GPIO Interrupt Module");
