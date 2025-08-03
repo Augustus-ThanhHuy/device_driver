@@ -141,3 +141,10 @@ static void __exit gpio_irq_exit(void)
 
     pr_info("GPIO Interrupt: Module unloaded\n");
 }
+
+module_init(gpio_irq_init);
+module_exit(gpio_irq_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("CDT");
+MODULE_DESCRIPTION("A simple GPIO Interrupt Module");

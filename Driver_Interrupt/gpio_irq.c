@@ -15,7 +15,7 @@ static char *gpio_desc = "GPIO Interrupt";
 
 static irqreturn_t gpio_irq_handler(int irq, void *dev_id)
 {
-    pr_info("GPIO Interrupt: Interrupt occured!\n");
+    pr_info("GPIO Interrupt: Interrupt occurred!\n");
     return IRQ_HANDLED;
 }
 
@@ -40,7 +40,7 @@ static int __init gpio_irq_init(void)
     //Kiểm tra xem số IRQ đã được cấp hay chưa
     if(gpio_irq_number < 0){
        pr_info("GPIO Interrupt: Failed to get IRQ number GPIO\n");
-        return gpio_irq_number
+        return gpio_irq_number;
     }
 
     pr_info("GPIO Interrupt: Mapped to IRQ %d\n", gpio_irq_number);
@@ -73,3 +73,10 @@ static void __exit gpio_irq_exit(void)
 
     pr_info("GPIO Interrupt: Module unloaded\n");
 }
+
+module_init(gpio_irq_init);
+module_exit(gpio_irq_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("CDT");
+MODULE_DESCRIPTION("A simple GPIO Interrupt Module");
