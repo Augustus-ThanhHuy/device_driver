@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <poll.h>
 
-#define DEVICE_FILE "/dev/gpio_irq_device"
+#define DEVICE_FILE "/dev/gpio_dev"
 
 int main()
 {

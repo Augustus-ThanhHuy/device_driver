@@ -2,10 +2,14 @@
 
 Below is the output when executing.
 
-![output](image.png)
 
+output of gpio_irq.c
+
+![output](gpio_irq.png)
+
+output of gpio_irq.c
+
+![output](gpio_irq_device.png)
   
-
-
 
 

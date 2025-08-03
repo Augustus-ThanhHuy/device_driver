@@ -12,7 +12,8 @@
 #include <linux/sched.h>
 
 #define GPIO_NUMBER 17 //(BCM)
- 
+#define DEVICE_NAME "gpio_irq_device"
+
 static unsigned int gpio_irq_number;
 static unsigned int gpio_pin = GPIO_NUMBER;
 static char *gpio_desc = "GPIO Interrupt";
@@ -69,7 +70,7 @@ static struct file_operations fops = {
     .read = device_read, // (hàm ioctl vẫn dc, do hàm ioctl dùng để
     // gửi data 2 chiều qua lại)
     // dùng hàm read vì chỉ cần lấy sk ngắt xảy ra lên user_space kh có chiều ngc lại
-}
+};
 
 static int __init gpio_irq_init(void)
 {
@@ -103,7 +104,7 @@ static int __init gpio_irq_init(void)
     if(gpio_irq_number < 0){
        pr_info("GPIO Interrupt: Failed to get IRQ number GPIO\n");
         unregister_chrdev(major_number, DEVICE_NAME);
-        return gpio_irq_number
+        return gpio_irq_number;
     }
 
     pr_info("GPIO Interrupt: Mapped to IRQ %d\n", gpio_irq_number);
@@ -131,7 +132,7 @@ static void __exit gpio_irq_exit(void)
     pr_info("GPIO Interrupt: Exiting\n");
 
     //nhả số ngắt IRQ number 
-    freee_irq(gpio_irq_number, NULL);
+    free_irq(gpio_irq_number, NULL);
 
     //nhả chân gpio 
     gpio_free(gpio_pin);
@@ -147,4 +148,5 @@ module_exit(gpio_irq_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Thanh Huy");
-MODULE_DESCRIPTION("A simple GPIO Interrupt Module");
+MODULE_DESCRIPTION("A GPIO Interrupt Module with user-space notification");
+MODULE_VERSION("0.1");
